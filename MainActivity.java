@@ -20,16 +20,22 @@ public class MainActivity extends AppCompatActivity {
         int userNum = Integer.parseInt(inputNum.getText().toString());
         Log.i("num", inputNum.getText().toString());
 
-        if (randomNum > userNum) {
-            Toast.makeText(MainActivity.this, "Guess higher", Toast.LENGTH_SHORT).show();
-        } else if (randomNum < userNum) {
-            Toast.makeText(MainActivity.this, "Guess lower", Toast.LENGTH_SHORT).show();
+        if (userNum >= 1 && userNum <= 100){
+
+            if (randomNum > userNum) {
+                Toast.makeText(MainActivity.this, "Guess higher", Toast.LENGTH_SHORT).show();
+            } else if (randomNum < userNum) {
+                Toast.makeText(MainActivity.this, "Guess lower", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(MainActivity.this, "Correct! New Number has been set", Toast.LENGTH_LONG).show();
+                Random rand = new Random();
+                randomNum = rand.nextInt(100) + 1;
+                Log.i("randoNum", "New random # is " + randomNum);
+            }
         } else {
-            Toast.makeText(MainActivity.this, "Correct! New Number has been set", Toast.LENGTH_LONG).show();
-            Random rand = new Random();
-            randomNum = rand.nextInt(100) + 1;
-            Log.i("randoNum", "New random # is " + randomNum);
+            Toast.makeText(MainActivity.this, "Number needs to be between 1-100", Toast.LENGTH_SHORT).show();
         }
+
 
     }
 
